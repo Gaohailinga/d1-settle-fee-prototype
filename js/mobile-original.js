@@ -35,10 +35,15 @@ D1.row = function (label, control, opts = {}) {
   return `<div class="std-row ${opts.cls || ''}" ${opts.field ? `data-field="${opts.field}"` : ''}><span class="lab ${opts.req ? 'req' : ''}">${label}</span><div class="ctl">${control}</div>${errorHtml}</div>`;
 };
 
-/* ============ 功能开通入口（原 004 页 + 新增 D+1 行） ============ */
+/* ============ 功能开通入口（原 004 页 + 新增 D+1 行） ============
+   产品开通进入 mobile-open；已开通产品可从费率信息变更入口进入 mobile-change，
+   变更入口展示 D+1 当前收费方式与费率摘要。 */
 D1.renderMobileEntry = function () {
+  const change = D1.state.change;
+  const summary = D1.feeText(change);
   const body = `<div class="std-entry-group">
       <button class="std-entry-row" data-go="mobile-open"><span class="t">产品开通</span><span class="d">外卡、翼支付、白条分期、订单支付、智慧营销、分账、银行账户（仅天阙非个代）</span><i class="arrow">›</i></button>
+      <button class="std-entry-row" data-go="mobile-change"><span class="t">费率信息变更</span><span class="d">D+1结算（已开通） · 当前${change.chargeType}${change.rateType ? ' · ' + change.rateType : ''} · ${summary}</span><i class="arrow">›</i></button>
       <button class="std-entry-row" data-action="standard-product"><span class="t">D0产品开通</span><span class="d">D0提现-快速到账、D0自动-定时到账</span><i class="arrow">›</i></button>
       <button class="std-entry-row" data-action="standard-product"><span class="t">推荐权限开通</span><i class="arrow">›</i></button>
     </div>`;

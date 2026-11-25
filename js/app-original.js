@@ -208,6 +208,7 @@ D1.reviewDemo = function (action) {
     'reject-change': () => D1.rejectApproval('change'),
     'demo-sign-open': () => { D1.state.signType = 'open'; D1.render(); D1.toast('已切换为产品开通签约'); },
     'demo-sign-change': () => { D1.state.signType = 'change'; D1.render(); D1.toast('已切换为费率变更签约'); },
+    'go-mobile-change': () => D1.go('mobile-change'),
     'go-omp-order': () => D1.go('omp-order'),
     'go-csp-archive': () => D1.go('csp-archive'),
     'demo-archive-batch': () => { D1.state.archiveMode = true; D1.render(); },
