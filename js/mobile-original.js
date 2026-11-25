@@ -48,7 +48,7 @@ D1.renderMobileEntry = function () {
 /* ============ D+1 结算费率表单 ============
    结算时间为枚举字段（下拉选项由 D1.SETTLE_TIME_OPTIONS 驱动），枚举值「次自然日结算」置灰不可选，下拉框置灰展示；
    收费方式默认不收费，含不收费/笔笔收/节假日收；
-   收费方式与费率类型常显；D+1结算费、保底值、封顶值在选择完费率类型后展示，默认填充 0。 */
+   收费方式与费率类型常显，费率类型仅在笔笔收/节假日收时必填，不收费时非必填；D+1结算费、保底值、封顶值在选择完费率类型后展示，默认填充 0。 */
 D1.feeRows = function (kind) {
   const fee = D1.state[kind];
   const percent = fee.rateType === '百分比';
@@ -61,7 +61,7 @@ D1.feeRows = function (kind) {
   return `<div class="std-form" data-fee-form="${kind}">
     ${D1.row('结算时间', `<select class="std-select std-select-disabled" id="${kind}-settle-time" data-fee-kind="${kind}" data-fee-key="settleTime" aria-label="结算时间" disabled>${settleOptions}</select>`)}
     ${D1.row('收费方式', `<select class="std-select" id="${kind}-charge" data-fee-kind="${kind}" data-fee-key="chargeType"><option ${fee.chargeType === '不收费' ? 'selected' : ''}>不收费</option><option ${fee.chargeType === '笔笔收' ? 'selected' : ''}>笔笔收</option><option ${fee.chargeType === '节假日收' ? 'selected' : ''}>节假日收</option></select>`, { req: true, field: `${kind}-charge`, error: '请选择收费方式' })}
-    ${D1.row('费率类型', `<select class="std-select" id="${kind}-type" data-fee-kind="${kind}" data-fee-key="rateType"><option value="">请选择</option><option ${fixed ? 'selected' : ''}>固定值</option><option ${percent ? 'selected' : ''}>百分比</option></select>`, { req: true, field: `${kind}-type`, error: '请选择费率类型' })}
+    ${D1.row('费率类型', `<select class="std-select" id="${kind}-type" data-fee-kind="${kind}" data-fee-key="rateType"><option value="">请选择</option><option ${fixed ? 'selected' : ''}>固定值</option><option ${percent ? 'selected' : ''}>百分比</option></select>`, { req: ['笔笔收', '节假日收'].includes(fee.chargeType), field: `${kind}-type`, error: '请选择费率类型' })}
     ${fee.rateType ? rateArea : ''}
   </div>`;
 };
