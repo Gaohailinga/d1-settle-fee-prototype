@@ -1,0 +1,314 @@
+/* 逐像素对齐标准产品开通原系统（掌中宝 H5 + 统一门户管理台） */
+:root{--m-brand:#4d9087;--m-brand-dark:#427c73;--m-check:#4a8a81;--m-text:#2e3135;--m-gray:#8d8d8d;--d-brand:#2e89bd;--d-text:#333333}
+body{padding:0;background:#f2f2f2}
+#app{padding:0!important}
+
+/* ============ 掌中宝：与原截图一致 ============ */
+.mobile-canvas{display:flex;justify-content:center;min-height:100vh;padding:0;background:#f2f2f2}
+.phone{position:relative;width:466px;max-width:100%;height:min(940px,calc(100vh - 24px));min-height:620px;margin:12px auto;background:#f2f2f2;border:23px solid #2e2f30;border-radius:46px;overflow:hidden;box-shadow:none;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--m-text);display:flex;flex-direction:column}
+.phone .phone-status{height:56px;padding:0 16px;background:#2e2f30;color:#fff;font-size:13px}
+.phone .phone-nav{height:64px;padding:0 44px;background:#fff;border-bottom:0;box-shadow:none}
+.phone .phone-nav h2{font-size:16px;font-weight:500;color:#2e3135}
+.phone .phone-back{left:12px;top:5px;width:34px;height:36px;font-size:28px;color:#2e3135}
+.phone-body{flex:1;min-height:0;overflow-y:auto;padding:0;background:#f2f2f2;scrollbar-width:thin}
+.phone.no-footer .phone-body{padding-bottom:20px}
+.phone-footer{position:relative;flex-shrink:0;display:flex;gap:0;padding:0;background:#fff;border-top:1px solid #ececec;box-shadow:none}
+.phone-home{display:none}
+
+/* 入口列表：白底通栏、无圆角、无图标卡片 */
+.std-entry-group{background:#fff;border-top:1px solid #ececec;border-bottom:1px solid #ececec}
+.std-entry-row{display:block;width:100%;min-height:80px;padding:18px 36px 18px 16px;position:relative;background:#fff;border:0;border-bottom:1px solid #f0f0f0;text-align:left;cursor:pointer}
+.std-entry-row:last-child{border-bottom:0}
+.std-entry-row:active{background:#fafafa}
+.std-entry-row .t{display:block;font-size:15px;color:#2e3135;line-height:22px}
+.std-entry-row .d{display:block;margin-top:4px;font-size:12px;color:#8d8d8d;line-height:18px}
+.std-entry-row .arrow{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:#c8c8c8;font-size:22px;font-weight:300;font-style:normal}
+.std-entry-row.is-new .t::after{content:"";display:inline-block;width:6px;height:6px;margin-left:6px;vertical-align:2px;background:#f5222d;border-radius:50%}
+
+/* 步骤条：与原系统一致的一行三节点 */
+/* 测试环境步骤条：文字节点 + 长箭头，当前/已完成节点青色 */
+.std-steps{display:flex;align-items:center;padding:14px 20px;background:#fff;border-bottom:1px solid #f0f0f0}
+.std-step{flex:0 0 auto;font-size:12px;color:#9a9a9a;white-space:nowrap;line-height:18px}
+.std-step.done,.std-step.active{color:#3f9b8e}
+.std-step.active{font-weight:600}
+.std-step-arr{flex:1;position:relative;height:1.5px;min-width:24px;margin:0 8px;background:#dcdcdc}
+.std-step-arr::after{content:"";position:absolute;right:0;top:50%;width:5px;height:5px;border-top:1.5px solid #dcdcdc;border-right:1.5px solid #dcdcdc;transform:translateY(-50%) rotate(45deg)}
+.std-step-arr.done{background:#3f9b8e}
+.std-step-arr.done::after{border-color:#3f9b8e}
+
+/* 分区标题：灰底通栏 + 左侧竖条 */
+/* 测试环境分组标题：白底 + 青色竖条 + 加粗标题，分组之间留灰缝 */
+.std-band{display:flex;align-items:center;gap:7px;margin-top:8px;padding:13px 14px;background:#fff;border-bottom:1px solid #f2f2f3}
+.std-band::before{content:"";width:3px;height:14px;background:var(--m-brand);border-radius:0}
+.std-band .t{font-size:15px;color:#1f1f1f;font-weight:600}
+.std-band .extra{margin-left:auto;font-size:12px;color:#8d8d8d}
+
+/* 表单行：左 label 右输入，与原系统一致 */
+.std-form{background:#fff}
+.std-row{display:flex;align-items:center;min-height:48px;padding:8px 14px;border-bottom:1px solid #f3f3f3}
+.std-row:last-child{border-bottom:0}
+/* 银行分组行：左银行名纵向居中，右侧逐行费率（测试环境审核页版式） */
+.std-group{display:flex;align-items:stretch;border-bottom:1px solid #f3f3f3}
+.std-group:last-child{border-bottom:0}
+.std-group-name{flex:0 0 34%;display:flex;align-items:center;padding:8px 14px;font-size:14px;color:#2e3135;line-height:20px}
+.std-group-name.req::before{content:"*";color:#f5222d;margin-right:2px}
+.std-group-body{flex:1;min-width:0}
+.std-group-body .std-row{border-bottom:1px solid #f3f3f3}
+.std-group-body .std-row:last-child{border-bottom:0}
+.std-row .lab{flex:0 0 auto;max-width:52%;font-size:14px;color:#2e3135;line-height:20px}
+.std-row .lab.req::before{content:"*";color:#f5222d;margin-right:2px}
+.std-row .ctl{flex:1;min-width:0;display:flex;align-items:center;justify-content:flex-end;gap:4px;text-align:right}
+.std-row .val{font-size:14px;color:#2e3135;word-break:break-all}
+.std-row .val.muted{color:#8d8d8d}
+.std-input,.std-select{width:100%;max-width:220px;height:32px;padding:0 8px;border:0;border-bottom:0;background:transparent;text-align:right;font-size:14px;color:#2e3135;outline:none;border-radius:0}
+.std-input::placeholder{color:#c4c4c4}
+.std-select{appearance:none;-webkit-appearance:none;padding-right:16px;background-image:linear-gradient(45deg,transparent 50%,#b5b5b5 50%),linear-gradient(135deg,#b5b5b5 50%,transparent 50%);background-position:calc(100% - 9px) 14px,calc(100% - 5px) 14px;background-size:4px 4px,4px 4px;background-repeat:no-repeat;direction:rtl}
+.std-select option{direction:ltr}
+.std-unit{flex:0 0 auto;font-size:14px;color:#2e3135}
+.std-row.has-error .std-input,.std-row.has-error .std-select{color:#f5222d}
+
+/* 单项禁用枚举沿用其他产品下拉框尺寸与文字样式 */
+.std-select-static:disabled{opacity:1;color:#2e3135;-webkit-text-fill-color:#2e3135;background-image:none;cursor:default;padding-right:8px}
+.std-row .form-error{display:none;position:absolute;right:14px;margin-top:34px;font-size:11px;color:#f5222d}
+.std-row{position:relative}
+.std-row.has-error .form-error{display:block}
+.std-row.upload .ctl{justify-content:flex-end}
+.std-upload-btn{display:inline-flex;align-items:center;gap:4px;padding:5px 12px;border:1px solid #d9d9d9;border-radius:3px;background:#fff;color:#595959;font-size:12px}
+.std-file-chip{display:inline-flex;align-items:center;gap:6px;max-width:100%;font-size:12px;color:#4d9087}
+.std-file-chip button{border:0;background:transparent;color:#b5b5b5;font-size:15px;padding:0 2px}
+.std-tip{padding:9px 14px;background:#fffbe6;color:#8a6d1d;font-size:12px;line-height:18px;border-bottom:1px solid #f3f3f3}
+.std-nocharge{flex:1;text-align:right;font-size:14px;color:#8d8d8d}
+
+/* 产品费率分组小标题（外卡 VISA/MC/JCB/AE、银行账户 中信/网商 等） */
+.std-sub{border-top:1px dashed #f0f0f0}
+.std-sub:first-child{border-top:0}
+.std-sub-t{display:flex;align-items:center;gap:5px;padding:10px 14px 2px;font-size:12px;color:#8d8d8d;font-weight:500}
+.std-sub-q{display:inline-flex;align-items:center;justify-content:center;width:13px;height:13px;border:1px solid #c9c9c9;border-radius:50%;font-size:10px;color:#b5b5b5;cursor:help}
+
+/* 低于红线审批截图弹窗：按参考图的卡片比例、两行标题和等宽双按钮复刻 */
+.std-redline-mask{position:absolute;inset:0;background:rgba(0,0,0,.56);display:flex;align-items:center;justify-content:center;z-index:30;padding:0 21px}
+.std-redline-sheet{width:100%;max-width:450px;padding:20px 22px 16px;background:#fff;border-radius:7px;box-shadow:0 4px 18px rgba(0,0,0,.1)}
+.std-redline-title{margin:0 0 16px;font-size:18px;color:#25282a;font-weight:600;line-height:26px;letter-spacing:0}
+.std-redline-rates{padding:0}
+.std-redline-rate{display:flex;align-items:center;min-height:42px;padding:0 10px;background:#fafafa;font-size:14px;line-height:20px}
+.std-redline-rate .rl-lab{flex:0 0 auto;color:#333}
+.std-redline-rate .rl-line{flex:1;min-width:10px;margin:0 10px;border-bottom:1px dotted #ddd}
+.std-redline-rate .rl-val{flex:0 0 auto;color:#333;font-weight:400}
+.std-redline-upload{padding:14px 0 0}
+.std-redline-upbtn{display:flex;flex-direction:column;align-items:center;justify-content:center;width:106px;height:94px;padding:0;border:0;border-radius:3px;background:#fafafa;color:#999;font-size:11px;cursor:pointer}
+.std-redline-upbtn .plus{display:block;margin-bottom:8px;color:#999;font-family:Arial,sans-serif;font-size:30px;font-weight:200;line-height:26px}
+.std-redline-upbtn:active{background:#f3f3f3}
+.std-redline-file{width:150px}
+.std-redline-file-thumb{display:flex;flex-direction:column;align-items:center;justify-content:center;height:88px;border:1px solid #ececec;border-radius:4px;background:#fafafa;color:#4d9087}
+.std-redline-file-thumb span{font-size:11px}.std-redline-file-thumb strong{margin-top:5px;font-size:12px;font-weight:400}
+.std-redline-file-name{display:block;max-width:100%;margin-top:6px;padding:0;border:0;background:transparent;color:#777;font-size:11px;white-space:nowrap}
+.std-redline-file-name span{margin-left:4px;color:#aaa;font-size:15px}
+.std-redline-note{padding:16px 0 18px;color:#f06464;font-size:13px;font-weight:600;line-height:20px;letter-spacing:0}
+/* 审核页审批邮件截图附件：测试环境为白底独立标签 + 圆角图片缩略图 */
+.std-material{padding:12px 14px 14px;background:#fff}
+.std-material-label{margin-bottom:10px;font-size:14px;color:#1f1f1f;line-height:20px}
+.std-material-thumb{width:132px;height:120px;border-radius:6px;background:linear-gradient(135deg,#cdb96e 0%,#a89a52 34%,#6d6a38 68%,#4c4c30 100%);box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.std-redline-note strong{font-weight:600}
+.std-redline-foot{display:flex;align-items:center;justify-content:space-between;gap:42px;padding:0}
+.std-redline-btn{flex:1;width:0;height:48px;border:0;border-radius:7px;font-size:16px;font-weight:400;cursor:pointer}
+.std-redline-btn.cancel{background:#f4f4f4;color:#666}
+.std-redline-btn.confirm{background:#4d9087;color:#fff}
+.std-redline-btn:active{opacity:.88}
+
+/* 底部按钮：与原系统一致，左返回(白) 右提交(品牌绿) */
+.std-foot-btn{flex:1;height:46px;border:0;border-radius:0;font-size:16px;font-weight:400;cursor:pointer}
+.std-foot-btn.secondary{background:#fff;color:#2e3135}
+.std-foot-btn.primary{background:var(--m-brand);color:#fff}
+.std-foot-btn.primary:active{background:var(--m-brand-dark)}
+.std-foot-btn:disabled{opacity:.5}
+
+.std-product-grid{display:grid;grid-template-columns:1fr 1fr;background:#fff;padding:6px 14px 12px;margin-bottom:8px}
+.std-product{position:relative;display:flex;align-items:center;gap:8px;min-height:60px;color:#2e3135;font-size:14px;cursor:pointer;border-radius:6px;padding:0 6px;margin:0 -6px;transition:background .15s}
+.std-product.selected{background:#f0f7f5}
+.std-product.selected>span:last-child{color:#2f6d63;font-weight:500}
+.std-product input{position:absolute;opacity:0;pointer-events:none}
+.std-check{width:16px;height:16px;border:1px solid #c8c8c8;border-radius:2px;background:#fff;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+.std-product input:checked+.std-check{background:#4a8a81;border-color:#4a8a81}
+.std-product input:checked+.std-check::after{content:"";width:7px;height:4px;border-left:1.5px solid #fff;border-bottom:1.5px solid #fff;transform:rotate(-45deg) translateY(-1px)}
+.std-rate-tabs{display:flex;gap:24px;overflow-x:auto;padding:13px 14px;background:#fff;border-bottom:1px solid #efeff1;white-space:nowrap;font-size:13px;color:#595959;scrollbar-width:none}
+.std-rate-tabs .active{color:var(--m-brand);border-bottom:2px solid var(--m-brand);padding-bottom:8px;margin-bottom:-11px}
+
+/* 工单列表（015 样式：分类筛选 + 卡片列表） */
+.std-wo-tabs{display:flex;flex-wrap:wrap;background:#fff;padding:0 6px;border-bottom:1px solid #f0f0f0}
+.std-wo-tab{padding:12px 10px;font-size:13px;color:#595959;background:transparent;border:0;position:relative}
+.std-wo-tab.active{color:var(--m-brand)}
+.std-wo-tab.active::after{content:"";position:absolute;left:10px;right:10px;bottom:0;height:2px;background:var(--m-brand)}
+.std-wo-card{margin:10px 12px;padding:12px;background:#fff;border-radius:4px;text-align:left;width:calc(100% - 24px);border:0;display:block}
+.std-wo-card .r1{display:flex;align-items:center;gap:8px}
+.std-wo-card .org{flex:1;min-width:0;font-size:13px;color:#2e3135;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.std-wo-card .kind{font-size:12px;color:#2e3135}
+.std-wo-card .r2{display:flex;align-items:center;margin-top:8px;font-size:12px;color:#8d8d8d}
+.std-wo-card .status{color:#fa8c16}
+.std-wo-card .status.ok{color:var(--m-brand)}
+.std-wo-card .time{margin-left:auto;font-size:11px;color:#b5b5b5}
+.std-wo-count{padding:14px;text-align:center;font-size:12px;color:#b5b5b5}
+
+/* 审批详情（013/016 样式） */
+.std-approve-foot{display:flex;gap:10px;padding:8px 12px;width:100%}
+.std-approve-foot .std-foot-btn{height:40px;border-radius:4px;font-size:15px}
+.std-approve-foot .reject{background:#fff;color:#2e3135;border:1px solid #d9d9d9}
+.std-approve-foot .pass{background:var(--m-brand);color:#fff;border:1px solid var(--m-brand)}
+
+/* ============ 演示切换（非业务内容，弱化） ============ */
+.demo-switcher{position:fixed;right:12px;bottom:12px;z-index:90;text-align:right;opacity:.85}
+.demo-switcher-toggle{padding:6px 12px;color:#fff;background:rgba(0,0,0,.55);border:0;border-radius:14px;font-size:11px}
+.demo-switcher-panel{width:212px;margin-top:8px;overflow:hidden;text-align:left;background:#fff;border:1px solid #e5e5e5;border-radius:6px;box-shadow:0 8px 30px rgba(0,0,0,.16);opacity:1}
+.demo-switcher-head{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border-bottom:1px solid #f0f0f0}
+.demo-switcher-head strong{font-size:12px;color:#333}
+.demo-switcher-head span{font-size:10px;color:#999}
+#prototype-nav{max-height:260px;overflow-y:auto;padding:6px}
+#prototype-nav .nav-item{width:100%;padding:7px 9px;margin:1px 0;color:#595959;background:transparent;border:0;border-radius:3px;font-size:12px;text-align:left}
+#prototype-nav .nav-item.active{color:#fff;background:var(--d-brand)}
+.demo-switcher-actions{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;padding:8px;border-top:1px solid #f0f0f0;background:#fafafa}
+.demo-switcher-actions button,.demo-switcher-actions a{min-height:26px;padding:0 3px;color:#595959;background:#fff;border:1px solid #e0e0e0;border-radius:3px;font-size:10px;text-align:center;line-height:24px;text-decoration:none}
+
+/* ============ 桌面管理台：OMP 用统一门户蓝，CSP 保留原藏青顶栏 ============ */
+.desktop-frame{background:#f2f2f2}
+.omp-frame .system-topbar{background:#0083cd;color:#fff}
+.csp-frame .system-topbar,.csp-standalone .system-topbar{background:#181f47;color:#fff}
+.csp-standalone .system-topbar{background:#171e3a}
+.csp-frame .system-logo-mark,.csp-standalone .system-logo-mark{background:#efb617;color:#181f47}
+.csp-frame .system-nav span,.csp-standalone .system-nav span{color:#fff}
+.omp-frame .system-logo-mark{background:var(--d-brand)}
+.omp-frame .system-nav span.active{color:var(--d-brand)}
+.omp-frame .system-nav span.active::after{background:var(--d-brand)}
+.desktop-frame .button-primary{background:#2894cc;border-color:#2894cc}
+.desktop-frame .button-primary:hover{background:#1f82b8;border-color:#1f82b8}
+.desktop-frame .button-text,.desktop-frame .link{color:#2894cc}
+.desktop-frame .system-tab.active{color:#2894cc}
+.csp-frame .system-tab.active{color:#181f47}
+.desktop-frame .system-sidebar{background:#fff}
+.desktop-frame .system-submenu.active{color:#2894cc;background:#eaf5fb}
+.desktop-frame .system-submenu.active::before{background:#2894cc}
+.csp-frame .system-submenu.active{color:#181f47;background:#f0f2f7}
+.csp-frame .system-submenu.active::before{background:#181f47}
+.csp-frame .system-sidebar{width:250px;flex:0 0 250px}
+
+/* CSP 独立签约页（原045）：SVG 实测色值与间距 */
+.csp-frame,.csp-standalone{border:0;border-radius:0;box-shadow:none}
+.csp-standalone{background:#fff}
+.csp-standalone{scrollbar-width:none}
+.csp-standalone::-webkit-scrollbar{display:none}
+.csp-standalone .system-content{background:#fff;padding:26px 48px 0;max-width:none}
+.standalone-titlebar{height:48px;background:#1d242d;display:flex;align-items:center;justify-content:center;padding:0 20px;position:relative}
+.standalone-titlebar strong{font-size:14px;font-weight:400;color:#fff}
+.standalone-titlebar .win-controls{position:absolute;right:22px;display:flex;gap:20px;color:#c9cdd8;font-size:15px;line-height:1}
+.standalone-crumb{height:44px;display:flex;align-items:center;padding:0 24px;color:#333;font-size:13px}
+.sign-page-title{font-size:15px;font-weight:400;color:#333;line-height:24px;margin:30px 0 30px;text-align:center}
+.csp-sign-cause{font-size:14px;line-height:24px;color:#333;margin:0 0 50px}
+.csp-sign-cause strong{font-weight:400}
+.csp-sign-label{font-size:13px;color:#333;margin:0 0 36px}
+.csp-sign-table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:13px;color:#333}
+.csp-sign-table th{background:#f2f3f5;font-weight:400;color:#333;border:1px solid #d0d0d0;padding:11px 14px;text-align:center}
+.csp-sign-table td{padding:12px 14px;border:1px solid #e5e6eb;color:#333;text-align:center;background:#fff}
+.csp-sign-footer{display:flex;justify-content:flex-start;padding:229px 0 24px calc(50% - 86px)}
+.csp-sign-footer .button-primary{width:150px;min-width:150px;height:34px;padding:0;font-size:14px;background:#69b3da;border-color:#69b3da;border-radius:2px}
+.csp-sign-footer.center{padding:24px 0 0;justify-content:center}
+.csp-sign-block-item+.csp-sign-block-item{margin-top:25px}
+.csp-sign-block-item .csp-sign-label{margin-bottom:15px}
+.csp-sign-subtable{margin-top:16px}
+.omp-sign-data{margin-top:14px}
+.omp-sign-data .csp-sign-block-item{margin-bottom:18px}
+.omp-sign-data .csp-sign-block-item .csp-sign-label{font-weight:500}
+.omp-sign-data .csp-sign-table{font-size:12px}
+.omp-sign-data .csp-sign-table th,.omp-sign-data .csp-sign-table td{padding:8px 10px}
+
+/* CSP 消息详情（原039）：白底无边框消息块，标题与正文间留出原图间距 */
+.csp-message-title{border-bottom:0;padding:0}
+.csp-message-body{max-width:100%;padding:0 4px;margin-top:34px}
+.csp-message-body h3{margin:0 0 14px;font-size:16px;font-weight:500;color:#333}
+.csp-message-body time{display:block;color:#999;font-size:12px;margin-bottom:10px}
+.csp-message-body p{margin:0 0 2px;font-size:13px;line-height:22px;color:#333}
+
+/* CSP 服务协议（原055）：纯白无顶栏、三列网格 */
+.csp-plain .system-content{max-width:none;padding:22px 32px}
+.archive-page-title{margin:0 0 40px;font-size:15px;font-weight:400;color:#333}
+.csp-plain .archive-toolbar{display:flex;align-items:center;justify-content:space-between;border:0;padding:0;margin:0 0 40px;background:#fff;font-size:13px;color:#333}
+.csp-plain .archive-toolbar label{display:flex;align-items:center;gap:6px;cursor:pointer}
+.csp-plain .archive-toolbar .archive-actions{display:flex;gap:10px}
+.csp-plain .archive-toolbar .button{height:30px;padding:0 18px;font-size:13px;border-radius:2px}
+.csp-plain .archive-toolbar .button-secondary{background:#eef0f4;border-color:#d5dbe5;color:#333}
+
+/* 确认已完成签约弹窗（原049）：无标题栏、灰边框白底、红色感叹号图标 + 右下蓝色实心按钮 */
+/* 测试环境签约结果确认弹窗：520px、距顶100px、黑色45%遮罩 */
+.modal-backdrop:has(.modal-sign-confirm){align-items:flex-start;padding:100px 20px 20px;background:rgba(0,0,0,.45);backdrop-filter:none}
+.modal-sign-confirm{position:relative;width:520px;border:0;border-radius:2px;box-shadow:0 3px 6px -4px rgba(0,0,0,.12),0 6px 16px 0 rgba(0,0,0,.08);background:#fff;animation:none}
+.modal-sign-confirm .modal-body{padding:43px 24px 0;display:flex;align-items:center}
+.modal-sign-confirm .modal-x{position:absolute;top:12px;right:18px;width:22px;height:22px;min-height:0;padding:0;color:#595959;background:transparent;border:0;font-size:20px;line-height:20px;cursor:pointer}
+.sign-confirm-tip{display:flex;align-items:flex-start;gap:8.5px;color:#595959;font-size:16px;line-height:24px}
+.sign-confirm-icon{width:18px;height:18px;flex:0 0 18px;margin-top:1px;display:grid;place-items:center;color:#fff;background:#ff4d4f;border-radius:50%;font-size:13px;font-weight:600;line-height:1}
+.modal-sign-confirm .modal-footer{padding:33px 24px 26px;background:#fff;border-top:0;border-radius:0}
+.modal-sign-confirm .modal-footer .button-primary{box-sizing:border-box;width:102px;min-width:102px;height:32px;min-height:0;padding:0;background:#1990ff;border:1px solid #1990ff;border-radius:4px;font-size:14px;line-height:30px;color:#fff}
+.csp-plain .agreement-group{background:#fff;border:0;margin:0 0 4px}
+.csp-plain .agreement-group-header{padding:12px 0 8px;background:#fff !important;border:0;font-size:14px;color:#333}
+.csp-plain .agreement-group-header strong{font-weight:600;color:#111}
+.csp-plain .agreement-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0 24px;padding:0}
+.csp-plain .agreement-cell{display:flex;align-items:center;gap:8px;padding:8px 0;font-size:13px;color:#333;cursor:pointer}
+.csp-standalone .sign-success{background:#fff;border:0;max-width:900px;margin:40px auto;padding:48px 40px;text-align:center}
+.success-check{width:56px;height:56px;border-radius:50%;background:#52c41a;color:#fff;font-size:32px;display:grid;place-items:center;margin:0 auto 18px}
+.desktop-frame .desktop-card{border-radius:0}
+.desktop-frame .desktop-card-title h3::before{background:#626364}
+.desktop-frame .inner-tab.active{color:#2894cc;border-bottom-color:#2894cc}
+
+/* 评审标注：只在评审版以细小红点体现，不改变原页面结构 */
+.d1-review-dot{display:inline-block;width:6px;height:6px;margin-left:5px;vertical-align:2px;background:#f5222d;border-radius:50%}
+
+@media(max-width:520px){.phone{max-width:100%}.phone-footer{max-width:100%}}
+
+/* OMP 机构签约管理（原027）：筛选区 + 表格 + 详情弹窗 */
+.omp-filter-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 24px;padding:4px 2px 14px}
+.omp-filter-grid label{display:flex;align-items:center;gap:8px;font-size:13px;color:#595959;white-space:nowrap}
+.omp-filter-grid .desktop-input,.omp-filter-grid .desktop-select{flex:1;min-width:0;height:30px;font-size:12px}
+.omp-filter-actions{display:flex;gap:10px;align-items:center;border-top:1px solid #f0f0f0;padding-top:12px}
+.omp-filter-actions .button{height:30px;padding:0 16px;font-size:12px}
+.omp-table-foot{padding:10px 2px 0;text-align:right;color:#8d8d8d;font-size:12px}
+.status-pill{display:inline-block;padding:2px 8px;border-radius:2px;font-size:12px}
+.status-pill.status-success{color:#389e0d;background:#f6ffed;border:1px solid #b7eb8f}
+.status-pill.status-warning{color:#d46b08;background:#fff7e6;border:1px solid #ffd591}
+.status-pill.status-neutral{color:#8c8c8c;background:#fafafa;border:1px solid #d9d9d9}
+.omp-detail-head{display:flex;gap:28px;padding:8px 0 4px;color:#595959;font-size:13px}
+.omp-detail-sub{margin:10px 0 8px;color:#595959;font-size:13px}
+.omp-detail-table{width:100%;border-collapse:collapse;font-size:12px}
+.omp-detail-table th,.omp-detail-table td{border:1px solid #e8e8e8;padding:8px 10px;text-align:left;color:#595959}
+.omp-detail-table th{background:#fafafa;font-weight:500}
+/* 测试环境签约页：灰底 + 白色内容面板，以下尺寸由2940×1670原图按2倍换算 */
+.csp-standalone{position:relative;background:#f0f2f5;border:0;border-radius:0;box-shadow:none}
+.csp-standalone .system-topbar{height:64px;padding:0 24px;background:#171f47}
+.csp-logo{min-width:280px;gap:14.5px;font-size:20px;font-weight:600;line-height:28px}
+.csp-logo-mark{display:block;width:31px;height:27px;margin-left:2px;object-fit:cover}
+.csp-nav{gap:40px}
+.csp-nav span,.csp-nav span.active{font-size:14px;font-weight:400;color:#fff;line-height:20px}
+.csp-nav span.active::after{display:none}
+.csp-user{gap:22px;font-size:14px;color:#fff}
+.csp-help{position:relative;left:3px;top:1px}
+.csp-user-ico{position:relative;display:block;width:28px;text-align:center;font-size:20px;line-height:20px}
+.csp-mail-ico{left:-25px}
+.csp-download-ico{left:-47px}
+.csp-user .user-avatar{width:24px;height:24px;margin-left:10px;font-size:12px;background:rgba(255,255,255,.85);color:#171f47}
+.csp-user .csp-user-avatar{position:relative;left:1px;top:3.5px;display:block;flex:0 0 24px;object-fit:cover;border-radius:50%;background:transparent}
+.csp-username{max-width:132px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.csp-page{margin:12px;min-height:calc(100vh - 88px);padding:19px 24px 24px;background:#fff}
+.csp-standalone .system-content{padding:0}
+.csp-page-tag{padding-left:3px;font-size:18px;line-height:26px;color:#595959}
+.sign-page-title{margin:74px 20px 0;text-align:center;font-size:18px;font-weight:600;line-height:32px;color:#333}
+.csp-sign-card{max-width:1100px;margin:0 auto;position:relative;padding-bottom:80px}
+.csp-sign-cause{margin:22px 20px 0;text-align:center;font-size:16px;line-height:24px;letter-spacing:.5px;color:#595959}
+.csp-agreement-link{font-size:16px;color:#1890ff;cursor:pointer}
+.csp-sign-block{margin:23px 13px 0;border:1px solid #eee;background:#fff;padding-top:25px}
+.csp-sign-confirm-title{padding:0 20px;text-align:center;font-size:18px;font-weight:600;line-height:26px;color:#262626}
+.csp-sign-block-item{margin:25px 24px 0;padding:0}
+.csp-sign-label{margin-bottom:17px;font-size:16px;font-weight:600;line-height:24px;color:#262626}
+.csp-sign-table{width:100%;border-collapse:collapse;font-size:12px;line-height:18px;color:#595959}
+.csp-sign-table th,.csp-sign-table td{box-sizing:border-box;height:38px;padding:0 12px;border:1px solid #e8e8e8;text-align:center;font-weight:400;line-height:18px}
+.csp-sign-table th{font-weight:600;color:#262626;background:#fff}
+.csp-sign-footer{position:static;display:flex;align-items:center;justify-content:center;background:#fff;border:0}
+.csp-sign-footer.center{position:static;border:0;padding:40px 0 25.5px}
+.csp-sign-footer .button-primary{box-sizing:border-box;width:102px;min-width:102px;height:32px;min-height:0;padding:0;background:#1990ff;border:1px solid #1990ff;border-radius:4px;font-size:14px;line-height:30px}
+.csp-float-btn{position:absolute;right:8px;bottom:94px;width:48px;height:48px;border:0;border-radius:50%;background:#1890ff;color:#fff;font-size:22px;line-height:1;cursor:pointer;box-shadow:0 2px 8px rgba(24,144,255,.35)}
+body:has(.csp-standalone) .demo-switcher,body:has(.csp-standalone) .prototype-overlay-note{display:none}
+body:has(.csp-standalone) .toast-region{visibility:visible}

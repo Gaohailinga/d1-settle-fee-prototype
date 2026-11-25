@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>D+1 结算手续费产品开通原型｜评审版</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="review-mode">
+  <main id="app" class="prototype-stage"></main>
+  <div class="demo-switcher" id="demo-switcher">
+    <button class="demo-switcher-toggle" id="demo-toggle" type="button" aria-expanded="false">演示页面</button>
+    <div class="demo-switcher-panel" id="demo-panel" hidden>
+      <div class="demo-switcher-head"><strong>D+1 产品开通</strong><span>评审版</span></div>
+      <nav id="prototype-nav" aria-label="原型页面导航"></nav>
+      <div class="demo-switcher-actions"><button id="reset-demo" type="button">重置演示</button><button id="toggle-notes" type="button" aria-expanded="false">需求标注</button><a href="index-original.html">纯净版</a></div>
+    </div>
+  </div>
+  <aside class="review-panel" id="review-panel" aria-label="本页需求标注">
+    <div class="review-panel-header"><div><span>本页需求</span><h2 id="review-title">功能开通</h2></div><button class="icon-button" id="close-notes" type="button" aria-label="关闭需求标注">×</button></div>
+    <div class="review-panel-body" id="review-content"></div>
+    <div class="review-panel-footer">标注仅用于评审，纯净版不展示。</div>
+  </aside>
+  <div id="modal-root"></div>
+  <div class="toast-region" id="toast-region" aria-live="polite"></div>
+  <script src="js/data.js"></script>
+  <script src="js/mobile.js"></script>
+  <script src="js/desktop.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
